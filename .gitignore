@@ -1,0 +1,46 @@
+# Ignore Quartus generated files
+*.bak
+*.cmp
+*.done
+*.eqn
+*.sopcinfo
+*.rpt
+*.jdi
+*.pin
+*.summary
+*.smsg
+*.map
+*.qprs
+*.sld
+.qsys_edit/
+*.stp
+*.qws
+
+#Ignore programming files
+*.sof
+*.pof
+*.jic
+
+#Ignore generated folders (these are huge)
+db/
+incremental_db/
+simulation/
+timing/
+testbench/
+internalmcu/
+greybox_tmp/
+
+#Ignore Eclipse generated files
+*.a
+*.elf
+obj/
+*.html
+.plugins/
+software/SBC_Video_BSP/HAL/
+software/SBC_Video_BSP/drivers/
+software/SBC_Video_BSP/*.h
+software/SBC_Video_BSP/*.c
+software/.metadata/
+software/*/.settings/
+*.objdump
+.force_relink

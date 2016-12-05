@@ -16,6 +16,9 @@
 *.stp
 *.qws
 
+#Ignore simulation files
+.vcd
+
 #Ignore programming files
 *.sof
 *.pof

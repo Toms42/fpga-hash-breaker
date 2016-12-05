@@ -48,3 +48,5 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name QIP_FILE "design files/memory/md5krom.qip"
+set_global_assignment -name QIP_FILE "design files/memory/md5srom.qip"

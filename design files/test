@@ -1,0 +1,168 @@
+#! c:/iverilog-x64/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1_1)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00000000027d2930 .scope module, "hash_op" "hash_op" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk"
+    .port_info 1 /INPUT 32 "a"
+    .port_info 2 /INPUT 32 "b"
+    .port_info 3 /INPUT 32 "c"
+    .port_info 4 /INPUT 32 "d"
+    .port_info 5 /INPUT 512 "m"
+    .port_info 6 /OUTPUT 32 "a_out"
+    .port_info 7 /OUTPUT 32 "b_out"
+    .port_info 8 /OUTPUT 32 "c_out"
+    .port_info 9 /OUTPUT 32 "d_out"
+    .port_info 10 /OUTPUT 512 "m_out"
+P_00000000027d2ab0 .param/l "index" 0 2 9, +C4<00000000000000000000000000000000>;
+P_00000000027d2ae8 .param/l "k" 0 2 11, +C4<00000000000000000000000000000000>;
+P_00000000027d2b20 .param/l "s" 0 2 10, +C4<00000000000000000000000000000000>;
+o000000000281e7c8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0000000002876720_0 .net "a", 31 0, o000000000281e7c8;  0 drivers
+v00000000028762c0_0 .var "a_out", 31 0;
+o000000000281e828 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0000000002875aa0_0 .net "b", 31 0, o000000000281e828;  0 drivers
+v00000000028764a0_0 .var "b_out", 31 0;
+o000000000281e888 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v00000000028767c0_0 .net "c", 31 0, o000000000281e888;  0 drivers
+v0000000002875c80_0 .var "c_out", 31 0;
+o000000000281e8e8 .functor BUFZ 1, C4<z>; HiZ drive
+v0000000002875d20_0 .net "clk", 0 0, o000000000281e8e8;  0 drivers
+o000000000281e918 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0000000002875b40_0 .net "d", 31 0, o000000000281e918;  0 drivers
+v0000000002876360_0 .var "d_out", 31 0;
+o000000000281e978 .functor BUFZ 512, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0000000002875e60_0 .net "m", 511 0, o000000000281e978;  0 drivers
+v0000000002876860_0 .var "m_out", 511 0;
+E_0000000002818dc0 .event posedge, v0000000002875d20_0;
+S_000000000281a6e0 .scope function, "f" "f" 2 13, 2 13 0, S_00000000027d2930;
+ .timescale 0 0;
+v00000000027d2c20_0 .var "b", 0 0;
+v0000000002874db0_0 .var "c", 0 0;
+v0000000002874e50_0 .var "d", 0 0;
+v0000000002874ef0_0 .var "f", 0 0;
+TD_hash_op.f ;
+    %load/vec4 v00000000027d2c20_0;
+    %load/vec4 v0000000002874db0_0;
+    %and;
+    %load/vec4 v00000000027d2c20_0;
+    %inv;
+    %load/vec4 v0000000002874e50_0;
+    %or;
+    %or;
+    %store/vec4 v0000000002874ef0_0, 0, 1;
+    %end;
+S_0000000002874f90 .scope function, "g" "g" 2 20, 2 20 0, S_00000000027d2930;
+ .timescale 0 0;
+v0000000002875110_0 .var "b", 0 0;
+v00000000028751b0_0 .var "c", 0 0;
+v0000000002875250_0 .var "d", 0 0;
+v00000000028752f0_0 .var "g", 0 0;
+TD_hash_op.g ;
+    %load/vec4 v0000000002875110_0;
+    %load/vec4 v0000000002875250_0;
+    %and;
+    %load/vec4 v00000000028751b0_0;
+    %load/vec4 v0000000002875250_0;
+    %inv;
+    %or;
+    %or;
+    %store/vec4 v00000000028752f0_0, 0, 1;
+    %end;
+S_0000000002875390 .scope function, "h" "h" 2 27, 2 27 0, S_00000000027d2930;
+ .timescale 0 0;
+v0000000002875510_0 .var "b", 0 0;
+v00000000028755b0_0 .var "c", 0 0;
+v0000000002875650_0 .var "d", 0 0;
+v00000000028756f0_0 .var "h", 0 0;
+TD_hash_op.h ;
+    %load/vec4 v0000000002875510_0;
+    %load/vec4 v00000000028755b0_0;
+    %xor;
+    %load/vec4 v0000000002875650_0;
+    %xor;
+    %store/vec4 v00000000028756f0_0, 0, 1;
+    %end;
+S_0000000002875790 .scope function, "i" "i" 2 34, 2 34 0, S_00000000027d2930;
+ .timescale 0 0;
+v0000000002875910_0 .var "b", 0 0;
+v0000000002876400_0 .var "c", 0 0;
+v0000000002875f00_0 .var "d", 0 0;
+v0000000002875fa0_0 .var "i", 0 0;
+TD_hash_op.i ;
+    %load/vec4 v0000000002876400_0;
+    %load/vec4 v0000000002875910_0;
+    %load/vec4 v0000000002875f00_0;
+    %inv;
+    %or;
+    %xor;
+    %store/vec4 v0000000002875fa0_0, 0, 1;
+    %end;
+    .scope S_00000000027d2930;
+T_4 ;
+    %wait E_0000000002818dc0;
+    %load/vec4 v0000000002875aa0_0;
+    %pad/u 512;
+    %load/vec4 v0000000002876720_0;
+    %pad/u 512;
+    %load/vec4 v0000000002875e60_0;
+    %pushi/vec4 65535, 0, 512;
+    %and;
+    %add;
+    %addi 0, 0, 512;
+    %load/vec4 v0000000002875aa0_0;
+    %load/vec4 v00000000028767c0_0;
+    %load/vec4 v0000000002875b40_0;
+    %store/vec4 v0000000002874e50_0, 0, 1;
+    %store/vec4 v0000000002874db0_0, 0, 1;
+    %store/vec4 v00000000027d2c20_0, 0, 1;
+    %fork TD_hash_op.f, S_000000000281a6e0;
+    %join;
+    %load/vec4  v0000000002874ef0_0;
+    %pad/u 512;
+    %add;
+    %add;
+    %load/vec4 v0000000002876720_0;
+    %pad/u 512;
+    %load/vec4 v0000000002875e60_0;
+    %pushi/vec4 65535, 0, 512;
+    %and;
+    %add;
+    %addi 0, 0, 512;
+    %load/vec4 v0000000002875aa0_0;
+    %load/vec4 v00000000028767c0_0;
+    %load/vec4 v0000000002875b40_0;
+    %store/vec4 v0000000002874e50_0, 0, 1;
+    %store/vec4 v0000000002874db0_0, 0, 1;
+    %store/vec4 v00000000027d2c20_0, 0, 1;
+    %fork TD_hash_op.f, S_000000000281a6e0;
+    %join;
+    %load/vec4  v0000000002874ef0_0;
+    %pad/u 512;
+    %add;
+    %ix/load 4, 32, 0;
+    %flag_set/imm 4, 0;
+    %shiftr 4;
+    %or;
+    %pad/u 32;
+    %assign/vec4 v00000000028764a0_0, 0;
+    %load/vec4 v0000000002875b40_0;
+    %assign/vec4 v00000000028762c0_0, 0;
+    %load/vec4 v0000000002875aa0_0;
+    %assign/vec4 v0000000002875c80_0, 0;
+    %load/vec4 v0000000002875aa0_0;
+    %assign/vec4 v0000000002876360_0, 0;
+    %load/vec4 v0000000002875e60_0;
+    %assign/vec4 v0000000002876860_0, 0;
+    %jmp T_4;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "hash-operation.v";

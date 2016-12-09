@@ -87,10 +87,17 @@ generate
 		end
 endgenerate
 
+function pad_message;
+	input m, l;
+	begin
+		pad_message = (m<<(512-l)|1'b1<<(511-l))|l;
+	end
+endfunction
+
 //testbench stuff:
 always @(posedge clk)
 begin
-	message_padded <= (message<<(512-length)|1'b1<<(511-length))|length;
+	message_padded <= pad_message(message,length);
 	hash <= {bl_a[64],bl_b[64],bl_c[64],bl_d[64]};
 	message_out <=bl_m[64];
 end

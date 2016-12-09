@@ -8,7 +8,7 @@ module md5core(
 	output reg [511:0] message_out
 );
 
-localparam [31:0] k [0:63] = '{
+localparam [32*64-1:0] k = {
 32'hd76aa478, 32'he8c7b756, 32'h242070db, 32'hc1bdceee,
 32'hf57c0faf, 32'h4787c62a, 32'ha8304613, 32'hfd469501,
 32'h698098d8, 32'h8b44f7af, 32'hffff5bb1, 32'h895cd7be,
@@ -27,11 +27,11 @@ localparam [31:0] k [0:63] = '{
 32'hf7537e82, 32'hbd3af235, 32'h2ad7d2bb, 32'heb86d391
 };
 
-localparam [4:0] s [0:63] = '{
-7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
-5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
-4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
-6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21
+localparam [64*5-1:0] s = {
+5'd7, 5'd12, 5'd17, 5'd22,  5'd7, 5'd12, 5'd17, 5'd22,  5'd7, 5'd12, 5'd17, 5'd22,  5'd7, 5'd12, 5'd17, 5'd22,
+5'd5,  5'd9, 5'd14, 5'd20,  5'd5, 5'd9,  5'd14, 5'd20,  5'd5, 5'd9,  5'd14, 5'd20,  5'd5, 5'd9,  5'd14, 5'd20,
+5'd4, 5'd11, 5'd16, 5'd23,  5'd4, 5'd11, 5'd16, 5'd23,  5'd4, 5'd11, 5'd16, 5'd23,  5'd4, 5'd11, 5'd16, 5'd23,
+5'd6, 5'd10, 5'd15, 5'd21,  5'd6, 5'd10, 5'd15, 5'd21,  5'd6, 5'd10, 5'd15, 5'd21,  5'd6, 5'd10, 5'd15, 5'd21
 };
 
 
@@ -48,7 +48,7 @@ parameter[31:0] b_initial = 32'hefcdab89;
 parameter[31:0] c_initial = 32'h98badcfe;
 parameter[31:0] d_initial = 32'h10325476;
 
-hash_op #(.k(k[0]),.s(s[0]),.index(0)) hash_op_0(
+hash_op #(.k(k[63*32 +: 32]),.s(s[63*5 +: 5]),.index(0)) hash_op_0(
 	.clk(clk),
 	.a(a_initial),
 	.b(b_initial),
@@ -67,8 +67,8 @@ generate
 		for(i = 1; i<64; i=i+1)
 		begin : generate_hash_ops
 			hash_op #(
-					.k(k[i]),
-					.s(s[i]),
+					.k(k[(63-i)*32 +: 32]),
+					.s(s[(63-i)*5 +: 5]),
 					.index(i))
 
 				hash_op_i(

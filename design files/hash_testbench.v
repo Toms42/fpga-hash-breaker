@@ -23,9 +23,10 @@ always begin
 end
 
 initial begin
+	$display("simulation started!");
 	$dumpfile("hash_test.vcd");
 	$dumpvars;
-	#150 $stop;
+	#150 $finish;
 end
 
 endmodule

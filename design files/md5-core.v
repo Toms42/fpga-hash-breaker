@@ -1,6 +1,6 @@
 module md5core(
 	//input wire clk,
-	input wire [63:0] message,
+	input wire [511:0] message,
 	input wire [63:0] length,
 	input wire clk,
 
@@ -87,10 +87,13 @@ generate
 		end
 endgenerate
 
-function pad_message;
-	input m, l;
+function[511:0] pad_message;
+	input[447:0] m;
+	input[63:0] l;
 	begin
-		pad_message = (m<<(512-l)|1'b1<<(511-l))|l;
+		pad_message = {m<<(448-l)
+			|1'b1<<(448-l-1),
+			l};
 	end
 endfunction
 

@@ -41,20 +41,20 @@ endfunction
 always @(posedge clk)
 begin
 	if(index<16) begin
-		b_out <= b + ((a + ((m>>(index % 16)) & 512'hffff) + k + f(b,c,d)) << s)
-		 | ((a + ((m>>(index % 16)) & 512'hffff) + k + f(b,c,d)) >> 32 - s);
+		b_out <= b + ((a + m[16*index +: 32] + k + f(b,c,d)) << s)
+		 | ((a + m>>[16*index +: 32] + k + f(b,c,d)) >> 32 - s);
 	end
 	else if(index<32) begin
-		b_out <= b + ((a + ((m>>(index % 16)) & 512'hffff) + k + g(b,c,d)) << s)
-		 | ((a + ((m>>(index % 16)) & 512'hffff) + k + g(b,c,d)) >> 32 - s);
-	end
+		b_out <= b + ((a + (m[16*((5*index+1)%16) +: 32]+ k + g(b,c,d)) << s)
+		 | ((a + m>>[16*((5*index+1)%16) +: 32] + k + f(b,c,d)) >> 32 - s);
+ 	end
 	else if(index<48) begin 
-		b_out <= b + ((a + ((m>>(index % 16)) & 512'hffff) + k + h(b,c,d)) << s)
-		 | ((a + ((m>>(index % 16)) & 512'hffff) + k + h(b,c,d)) >> 32 - s);
+		b_out <= b + ()a + (m[16*((3*index+5)%16) +: 32]+ k + h(b,c,d)) << s)
+		 | ((a + m>>[16*((3*index+5)%16) +: 32] + k + f(b,c,d)) >> 32 - s);
 	end
 	else begin
-		b_out <= b + ((a + ((m>>(index % 16)) & 512'hffff) + k + i(b,c,d)) << s)
-		 | ((a + ((m>>(index % 16)) & 512'hffff) + k + i(b,c,d)) >> 32 - s);
+		b_out <= b + ((a + (m[16*((7*index)%16) +: 32]+ k + i(b,c,d)) << s)
+		 | ((a + m>>[16*((7*index)%16) +: 32] + k + f(b,c,d)) >> 32 - s);
 	end
 
 	a_out <= d;

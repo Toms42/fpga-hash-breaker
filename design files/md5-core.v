@@ -48,18 +48,23 @@ parameter[31:0] b_initial = 32'hefcdab89;
 parameter[31:0] c_initial = 32'h98badcfe;
 parameter[31:0] d_initial = 32'h10325476;
 
-hash_op #(.k(k[63*32 +: 32]),.s(s[63*5 +: 5]),.index(0)) hash_op_0(
-	.clk(clk),
-	.a(a_initial),
-	.b(b_initial),
-	.c(c_initial),
-	.d(d_initial),
-	.m(message_padded),
-	.a_out(bl_a[1]),
-	.b_out(bl_b[1]),
-	.c_out(bl_c[1]),
-	.d_out(bl_d[1]),
-	.m_out(bl_m[1])
+hash_op #(
+		.k(k[63*32 +: 32]),
+		.s(s[63*5 +: 5]),
+		.index(0))
+
+	hash_op_0(
+		.clk(clk),
+		.a(a_initial),
+		.b(b_initial),
+		.c(c_initial),
+		.d(d_initial),
+		.m(message_padded),
+		.a_out(bl_a[1]),
+		.b_out(bl_b[1]),
+		.c_out(bl_c[1]),
+		.d_out(bl_d[1]),
+		.m_out(bl_m[1])
 	);
 
 generate

@@ -14,11 +14,16 @@ md5core hasher(
 	.message_out(message_out)
 );
 
+reg[7:0] count=0;
 always begin
 	#1 clk = !clk;
 	if(clk==1)
 	begin
-		$display("hash=%x for message=%x",hash,message_out);
+		if(count==66 || count==65)
+		begin
+			$display("hash=%x for message=%x",hash,message_out);
+		end
+	count<=count+1;
 	end
 end
 

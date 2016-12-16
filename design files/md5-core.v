@@ -1,3 +1,5 @@
+//`define REVERSE_BYTES_64(__IN) ({__IN[7:0],__IN[15:8],__IN[23:16],__IN[31:24],__IN[39:33],__IN[47:34],__IN[55:48],__IN[63:56]})
+
 module md5core(
 	//input wire clk,
 	input wire [511:0] message,

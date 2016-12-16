@@ -38,30 +38,35 @@ begin
 end
 endfunction
 
+reg[31:0] debug;
 always @(posedge clk)
 begin
 	if(index<16) begin
-		b_out <= b + ((a + m[16*index +32 +: 32] + k + f(b,c,d)) << s)
-		 | ((a + m[16*index +: 32] + k + f(b,c,d)) >> (32 - s));
+		b_out <= b + ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) << s)
+		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
+	 	debug = m[512-32-32*(index%16) +: 32];
 	end
 	else if(index<32) begin
-		b_out <= b + ((a + m[16*((5*(index-16)+1)%16) +: 32]+ k + g(b,c,d)) << s)
-		 | ((a + m[16*((5*(index-16)+1)%16) +: 32] + k + f(b,c,d)) >> (32 - s));
+		b_out <= b + ((a + m[512-32-32*(index%16) +: 32]+ k + g(b,c,d)) << s)
+		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
+	 	debug = m[512-32-32*(index%16) +: 32];
  	end
 	else if(index<48) begin 
-		b_out <= b + ((a + m[16*((3*(index-32)+5)%16) +: 32]+ k + h(b,c,d)) << s)
-		 | ((a + m[16*((3*(index-32)+5)%16) +: 32] + k + f(b,c,d)) >> (32 - s));
+		b_out <= b + ((a + m[512-32-32*(index%16) +: 32]+ k + h(b,c,d)) << s)
+		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
+	 	debug = m[512-32-32*(index%16) +: 32];
 	end
 	else begin
-		b_out <= b + ((a + m[16*((7*(index-48))%16) +: 32]+ k + i(b,c,d)) << s)
-		 | ((a + m[16*((7*(index-48))%16) +: 32] + k + f(b,c,d)) >> (32 - s));
+		b_out <= b + ((a + m[512-32-32*(index%16) +: 32]+ k + i(b,c,d)) << s)
+		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
+	 	debug = m[512-32-32*(index%16) +: 32];
 	end
 
 	a_out <= d;
 	c_out <= b;
 	d_out <= c;
 	m_out <= m;
-	$display("%d: %x  %x  %x  %x\t%x|%d\t%x|%x\n",index,a_out,b_out,c_out,d_out,k,s,f(b,c,d),m[16*index +: 32]);
+	//$display("%d: %x  %x  %x  %x\t%x|%d\t%x|%x\n",index,a_out,b_out,c_out,d_out,k,s,f(b,c,d),m[16*index +: 32]);
 end
 
 endmodule

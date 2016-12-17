@@ -18,6 +18,7 @@
 
 #Ignore simulation files
 .vcd
+.vvp
 
 #Ignore programming files
 *.sof

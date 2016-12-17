@@ -2,7 +2,7 @@
 
 module md5core(
 	//input wire clk,
-	input wire [511:0] message,
+	input wire [447:0] message,
 	input wire [63:0] length,
 	input wire clk,
 
@@ -100,7 +100,15 @@ function[511:0] pad_message;
 	begin
 		pad_message = {m<<(448-l)
 			|1'b1<<(448-l-1),
-			l};
+			l[7:0],
+			l[15:8],
+			l[23:16],
+			l[31:24],
+			l[39:32],
+			l[47:40],
+			l[55:48],
+			l[63:56]
+			};
 	end
 endfunction
 

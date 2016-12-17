@@ -1,14 +1,14 @@
 module testbench();
 
 reg clk = 0;
-reg[511:0] message = "test";
+reg[447:0] message = "test";
 
 wire[127:0] hash;
 wire [511:0] message_out;
 
 md5core hasher(
 	.message(message),
-	.length(64'd32),
+	.length(64'h20),
 	.clk(clk),
 	.hash(hash),
 	.message_out(message_out)

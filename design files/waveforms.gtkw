@@ -1,10 +1,10 @@
 [*]
 [*] GTKWave Analyzer v3.3.78 (w)1999-2016 BSI
-[*] Sat Dec 17 04:30:21 2016
+[*] Sat Dec 17 04:49:39 2016
 [*]
 [dumpfile] "C:\0\fpga\fpga-hash-breaker\design files\hash_test.vcd"
-[dumpfile_mtime] "Sat Dec 17 04:24:33 2016"
-[dumpfile_size] 224272
+[dumpfile_mtime] "Sat Dec 17 04:49:09 2016"
+[dumpfile_size] 225201
 [savefile] "C:\0\fpga\fpga-hash-breaker\design files\waveforms.gtkw"
 [timestart] 125
 [size] 972 1011

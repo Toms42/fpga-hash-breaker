@@ -124,10 +124,10 @@ always @(posedge clk)
 begin
 	message_padded <= pad_message(message,length);
 	hash <= {
-		big_endian_32b(bl_a[64]),
-		big_endian_32b(bl_b[64]),
-		big_endian_32b(bl_c[64]),
-		big_endian_32b(bl_d[64])};
+		big_endian_32b(bl_a[64]+a_initial),
+		big_endian_32b(bl_b[64]+b_initial),
+		big_endian_32b(bl_c[64]+c_initial),
+		big_endian_32b(bl_d[64]+d_initial)};
 	message_out <=bl_m[64];
 end
 endmodule

@@ -17,8 +17,8 @@
 *.qws
 
 #Ignore simulation files
-.vcd
-.vvp
+*.vcd
+*.vvp
 
 #Ignore programming files
 *.sof

@@ -38,35 +38,42 @@ begin
 end
 endfunction
 
+function[31:0] little_endian_32b;
+	input[31:0] __IN;
+	begin
+		little_endian_32b = {__IN[0+:8],__IN[8+:8],__IN[16+:8],__IN[24+:8]};
+	end
+endfunction
+
 reg[31:0] debug;
 always @(posedge clk)
 begin
 	if(index<16) begin
-		b_out <= b + ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) << s)
-		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
-	 	debug = m[512-32-32*(index%16) +: 32];
+		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
+	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
 	end
 	else if(index<32) begin
-		b_out <= b + ((a + m[512-32-32*(index%16) +: 32]+ k + g(b,c,d)) << s)
-		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
-	 	debug = m[512-32-32*(index%16) +: 32];
+		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32])+ k + g(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
+	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
  	end
 	else if(index<48) begin 
-		b_out <= b + ((a + m[512-32-32*(index%16) +: 32]+ k + h(b,c,d)) << s)
-		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
-	 	debug = m[512-32-32*(index%16) +: 32];
+		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32])+ k + h(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
+	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
 	end
 	else begin
-		b_out <= b + ((a + m[512-32-32*(index%16) +: 32]+ k + i(b,c,d)) << s)
-		 | ((a + m[512-32-32*(index%16) +: 32] + k + f(b,c,d)) >> (32 - s));
-	 	debug = m[512-32-32*(index%16) +: 32];
+		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32])+ k + i(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
+	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
 	end
 
 	a_out <= d;
 	c_out <= b;
 	d_out <= c;
 	m_out <= m;
-	//$display("%d: %x  %x  %x  %x\t%x|%d\t%x|%x\n",index,a_out,b_out,c_out,d_out,k,s,f(b,c,d),m[16*index +: 32]);
+	//$display("%d: %x  %x  %x  %x\t%x|%d\t%x|%x\n",index,a_out,b_out,c_out,d_out,k,s,f(b,c,d),`LITTLE_ENDIAN_32(m[16*index +: 32]));
 end
 
 endmodule

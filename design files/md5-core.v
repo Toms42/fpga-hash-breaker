@@ -112,11 +112,22 @@ function[511:0] pad_message;
 	end
 endfunction
 
+function[31:0] big_endian_32b;
+	input[31:0] __IN;
+	begin
+		big_endian_32b = {__IN[0+:8],__IN[8+:8],__IN[16+:8],__IN[24+:8]};
+	end
+endfunction
+
 //testbench stuff:
 always @(posedge clk)
 begin
 	message_padded <= pad_message(message,length);
-	hash <= {bl_a[64],bl_b[64],bl_c[64],bl_d[64]};
+	hash <= {
+		big_endian_32b(bl_a[64]),
+		big_endian_32b(bl_b[64]),
+		big_endian_32b(bl_c[64]),
+		big_endian_32b(bl_d[64])};
 	message_out <=bl_m[64];
 end
 endmodule

@@ -1,24 +1,31 @@
 [*]
 [*] GTKWave Analyzer v3.3.78 (w)1999-2016 BSI
-[*] Wed Dec 14 18:14:56 2016
+[*] Sat Dec 17 04:30:21 2016
 [*]
 [dumpfile] "C:\0\fpga\fpga-hash-breaker\design files\hash_test.vcd"
-[dumpfile_mtime] "Fri Dec 09 18:23:34 2016"
-[dumpfile_size] 181287
+[dumpfile_mtime] "Sat Dec 17 04:24:33 2016"
+[dumpfile_size] 224272
 [savefile] "C:\0\fpga\fpga-hash-breaker\design files\waveforms.gtkw"
-[timestart] 118
-[size] 1680 1027
+[timestart] 125
+[size] 972 1011
 [pos] -1 -1
-*-2.480315 126 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-2.487798 127 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] testbench.
 [treeopen] testbench.hasher.
+[treeopen] testbench.hasher.generate_hash_ops[15].hash_op_i.
 [treeopen] testbench.hasher.generate_hash_ops[1].hash_op_i.
+[treeopen] testbench.hasher.generate_hash_ops[23].
+[treeopen] testbench.hasher.generate_hash_ops[24].
+[treeopen] testbench.hasher.generate_hash_ops[31].
+[treeopen] testbench.hasher.generate_hash_ops[32].
 [treeopen] testbench.hasher.generate_hash_ops[35].
+[treeopen] testbench.hasher.generate_hash_ops[47].
+[treeopen] testbench.hasher.generate_hash_ops[48].
 [treeopen] testbench.hasher.generate_hash_ops[63].hash_op_i.
-[sst_width] 284
-[signals_width] 408
+[sst_width] 288
+[signals_width] 174
 [sst_expanded] 1
-[sst_vpaned_height] 303
+[sst_vpaned_height] 590
 @28
 testbench.hasher.generate_hash_ops[63].hash_op_i.clk
 @c00022
@@ -62,22 +69,68 @@ testbench.hasher.hash_op_0.a_out[31:0]
 testbench.hasher.hash_op_0.b_out[31:0]
 testbench.hasher.hash_op_0.c_out[31:0]
 testbench.hasher.hash_op_0.d_out[31:0]
+testbench.hasher.hash_op_0.debug[31:0]
+testbench.hasher.hash_op_0.f.f[31:0]
 testbench.hasher.hash_op_0.m_out[511:0]
 testbench.hasher.generate_hash_ops[1].hash_op_i.a_out[31:0]
 testbench.hasher.generate_hash_ops[1].hash_op_i.b_out[31:0]
 testbench.hasher.generate_hash_ops[1].hash_op_i.c_out[31:0]
 testbench.hasher.generate_hash_ops[1].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[1].hash_op_i.debug[31:0]
 testbench.hasher.generate_hash_ops[1].hash_op_i.m_out[511:0]
-testbench.hasher.generate_hash_ops[62].hash_op_i.a_out[31:0]
-testbench.hasher.generate_hash_ops[62].hash_op_i.b_out[31:0]
-testbench.hasher.generate_hash_ops[62].hash_op_i.c_out[31:0]
-testbench.hasher.generate_hash_ops[62].hash_op_i.d_out[31:0]
-testbench.hasher.generate_hash_ops[62].hash_op_i.m_out[511:0]
+testbench.hasher.generate_hash_ops[2].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[2].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[2].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[2].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[16].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[16].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[16].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[16].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[16].hash_op_i.debug[31:0]
+testbench.hasher.generate_hash_ops[16].hash_op_i.m_out[511:0]
+testbench.hasher.generate_hash_ops[23].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[23].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[23].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[23].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[23].hash_op_i.debug[31:0]
+testbench.hasher.generate_hash_ops[23].hash_op_i.m_out[511:0]
+testbench.hasher.generate_hash_ops[24].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[24].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[24].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[24].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[24].hash_op_i.debug[31:0]
+testbench.hasher.generate_hash_ops[24].hash_op_i.m_out[511:0]
+testbench.hasher.generate_hash_ops[31].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[31].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[31].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[31].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[31].hash_op_i.debug[31:0]
+testbench.hasher.generate_hash_ops[31].hash_op_i.m_out[511:0]
+testbench.hasher.generate_hash_ops[32].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[32].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[32].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[32].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[32].hash_op_i.debug[31:0]
+testbench.hasher.generate_hash_ops[32].hash_op_i.m_out[511:0]
+testbench.hasher.generate_hash_ops[47].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[47].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[47].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[47].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[47].hash_op_i.debug[31:0]
+testbench.hasher.generate_hash_ops[47].hash_op_i.m_out[511:0]
+testbench.hasher.generate_hash_ops[48].hash_op_i.a_out[31:0]
+testbench.hasher.generate_hash_ops[48].hash_op_i.b_out[31:0]
+testbench.hasher.generate_hash_ops[48].hash_op_i.c_out[31:0]
+testbench.hasher.generate_hash_ops[48].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[48].hash_op_i.debug[31:0]
+testbench.hasher.generate_hash_ops[48].hash_op_i.m_out[511:0]
 testbench.hasher.generate_hash_ops[63].hash_op_i.a_out[31:0]
 testbench.hasher.generate_hash_ops[63].hash_op_i.b_out[31:0]
 testbench.hasher.generate_hash_ops[63].hash_op_i.c_out[31:0]
 testbench.hasher.generate_hash_ops[63].hash_op_i.d_out[31:0]
+testbench.hasher.generate_hash_ops[63].hash_op_i.debug[31:0]
 testbench.hasher.generate_hash_ops[63].hash_op_i.m_out[511:0]
+@23
 testbench.hasher.hash[127:0]
 testbench.hasher.message_out[511:0]
 [pattern_trace] 1

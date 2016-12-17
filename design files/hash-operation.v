@@ -49,24 +49,24 @@ reg[31:0] debug;
 always @(posedge clk)
 begin
 	if(index<16) begin
-		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) << s)
-		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
+		b_out <= b + (((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s)));
 	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
 	end
 	else if(index<32) begin
-		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32])+ k + g(b,c,d)) << s)
-		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
-	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
+		b_out <= b + (((a + little_endian_32b(m[512-32-32*((5*index+1)%16) +: 32]) + k + g(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*((5*index+1)%16) +: 32]) + k + g(b,c,d)) >> (32 - s)));
+	 	debug = little_endian_32b(m[512-32-32*((5*index+1)%16) +: 32]);
  	end
 	else if(index<48) begin 
-		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32])+ k + h(b,c,d)) << s)
-		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
-	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
+		b_out <= b + (((a + little_endian_32b(m[512-32-32*((3*index+5)%16) +: 32]) + k + h(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*((3*index+5)%16) +: 32]) + k + h(b,c,d)) >> (32 - s)));
+	 	debug = little_endian_32b(m[512-32-32*((3*index+5)%16) +: 32]);
 	end
 	else begin
-		b_out <= b + ((a + little_endian_32b(m[512-32-32*(index%16) +: 32])+ k + i(b,c,d)) << s)
-		 | ((a + little_endian_32b(m[512-32-32*(index%16) +: 32]) + k + f(b,c,d)) >> (32 - s));
-	 	debug = little_endian_32b(m[512-32-32*(index%16) +: 32]);
+		b_out <= b + (((a + little_endian_32b(m[512-32-32*((7*index)%16) +: 32]) + k + i(b,c,d)) << s)
+		 | ((a + little_endian_32b(m[512-32-32*((7*index)%16) +: 32]) + k + i(b,c,d)) >> (32 - s)));
+	 	debug = little_endian_32b(m[512-32-32*((7*index)%16) +: 32]);
 	end
 
 	a_out <= d;

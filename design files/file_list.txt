@@ -1,3 +1,5 @@
 hash-operation.v
 md5-core.v
 hash_testbench.v
+character_counter.v
+phrase_generator.v

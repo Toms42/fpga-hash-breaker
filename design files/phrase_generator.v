@@ -10,7 +10,7 @@ module generator(
 	input wire initiate,
 
 	input wire program,
-	input wire[25*8*127-1:0] prg_format,
+	input wire[8*127-1:0] prg_format,
 	input wire[7:0] prg_num_characters,
 	input wire[7:0] prg_len,
 	input wire[127:0] prg_h_goal,
@@ -23,7 +23,7 @@ module generator(
 	output reg[7:0] state=`STATE_IDLE
 	);
 
-reg[25*8*127-1:0] format;
+reg[8*127-1:0] format;
 reg[25*8-1:0] lengths;
 
 reg[7:0] len = 0;
@@ -31,13 +31,11 @@ reg[7:0] num_characters = 0;
 
 reg[127:0] h_goal=0;
 
-wire count;
-assign count = state==`STATE_START ? clk : 0;
-
 wire carry_array[0:25];
-reg enable_array[0:25];
+reg[25:0] enable_array;
 
-reg programming=0;
+wire count;
+assign count = (state==`STATE_RUNNING) ? clk : 1'b0;
 
 generate
 	genvar i;
@@ -48,9 +46,9 @@ generate
 				.carry_in(carry_array[i]),
 				.carry_out(carry_array[i+1]),
 				.prg_numchars(lengths[i*8+:8]),
-				.prg_charlist(format[i*8*127+:8*127]),
-				.enable(enable_array[i]),
-				.program(programming),
+				.prg_charlist(format),
+				.enable(enable_array[i +: 1]),
+				.program(program),
 				.char(m[8*i +: 8])
 			);
 		end
@@ -71,21 +69,14 @@ begin
 		num_characters<=prg_num_characters;
 		h_goal<=prg_h_goal;
 		m_len<=prg_len;
-		for(index2=0;index2<25;index2+=1)
-		begin
-			enable_array[index2]<=0;
-		end
-
-		for(index=0;index<num_characters;index++)
-		begin
-			enable_array[index+1]=1'b1;
-		end
+		enable_array<=0;
 
 		state<=`STATE_IDLE;	
 	end
 
 	`STATE_IDLE:
 	begin
+		enable_array <= 25'b1111111111111111111111111 >> (25-num_characters);
 		if(initiate==1'b1)
 		begin
 			state<=`STATE_RUNNING;
@@ -98,7 +89,8 @@ begin
 
 	`STATE_START:
 	begin
-		state <= `STATE_RUNNING;
+
+		state = `STATE_RUNNING;
 	end
 
 	`STATE_RUNNING:

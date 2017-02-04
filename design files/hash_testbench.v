@@ -1,8 +1,10 @@
 module testbench();
 
 reg clk = 0;
-reg[447:0] message = "test";
+//reg[447:0] message = "test";
 wire[63:0] len;
+
+wire[447:0] message;
 
 wire[7:0] state;
 wire[127:0] hash;
@@ -20,8 +22,8 @@ reg initiate=0;
 reg program=0;
 
 parameter[8*127-1:0] charlist_example="abcdefghijklmnopqrstuvwxyz1234567890";
-reg[25*8*127-1:0] prg_format={25{charlist_example}};
-
+reg[8*127-1:0] prg_format={charlist_example};
+parameter[127:0] example_hash_goal = "test";
 
 generator phrase_gen(
 	.clk(clk),
@@ -30,9 +32,9 @@ generator phrase_gen(
 	.prg_format(prg_format),
 	.prg_num_characters(8'd36),
 	.prg_len(8'd5),
-	.prg_h_goal("test"),
+	.prg_h_goal(example_hash_goal),
 	.h_res(hash),
-	.m(m),
+	.m(message),
 	.m_len(len),
 	.state(state)
 );
